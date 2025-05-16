@@ -17,3 +17,6 @@ This repo is a lightweight, high-signal toolkit for thriving in the AI age. It i
 • Designed for humans navigating high-input, high-distraction environments
 
 Use these tools to think clearly, act fast, and stay sane amid the noise.
+
+Thanks!
+~ Valmiki

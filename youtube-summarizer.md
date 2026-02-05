@@ -166,3 +166,52 @@ Follow-ups work naturally - just ask without `/yt`:
 ```
 "What about the part on testing?"
 ```
+
+---
+
+## Packaging as a Plugin
+
+The manual setup above scatters files across `~/.claude/`. A plugin bundles everything for one-command installation.
+
+**Plugin structure:**
+```
+youtube-summarizer/
+├── .claude-plugin/
+│   └── plugin.json
+├── .mcp.json
+├── agents/
+│   └── youtube-summarizer.md
+├── skills/
+│   └── yt/
+│       └── SKILL.md
+└── README.md
+```
+
+**`.claude-plugin/plugin.json`:**
+```json
+{
+  "name": "youtube-summarizer",
+  "description": "YouTube video summarization with context-efficient subagent",
+  "author": { "name": "your-name" }
+}
+```
+
+**`.mcp.json`:**
+```json
+{
+  "youtube-transcript": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["@fabriqa.ai/youtube-transcript-mcp@latest"]
+  }
+}
+```
+
+The `agents/` and `skills/` folders contain the same files from sections 2 and 3 above.
+
+**Installation (once published):**
+```bash
+claude plugins install youtube-summarizer
+```
+
+All three layers install together. Users get `/yt` immediately after restart.
